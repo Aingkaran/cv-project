@@ -60,7 +60,7 @@ class App extends Component {
             Add Name
           </button>
         </form>
-        <Overview tasks={basicInfo.Name} />
+        <Overview basicInfo={basicInfo.Name} />
 
       </div>
     );
