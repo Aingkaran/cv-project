@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
 
 
-class Overview extends Component {
+class Basicinfo extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {tasks} = this.props;
+    const {basicInfoName} = this.props;
+    const {basicInfoEmail} = this.props;
+    const {basicInfoPhone} = this.props;
 
     return (
         <div>
-            
+          <div className="Name">{basicInfoName}</div>
+          <div className="Email">{basicInfoEmail}</div>
+          <div className = "Phone">{basicInfoPhone}</div>
       </div>
     );
   }
 }
 
-export default Overview;
+export default Basicinfo;
