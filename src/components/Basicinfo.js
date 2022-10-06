@@ -12,7 +12,7 @@ class Basicinfo extends Component {
     const {basicInfoPhone} = this.props;
 
     return (
-        <div>
+        <div className="BasicInfo">
           <div className="Name">{basicInfoName}</div>
           <div className="Email">{basicInfoEmail}</div>
           <div className = "Phone">{basicInfoPhone}</div>

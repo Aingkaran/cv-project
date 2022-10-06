@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import uniqid from "uniqid";
 import Basicinfo from './components/Basicinfo';
+import './styles/App.css';
 
 
 
@@ -8,84 +8,101 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.onSubmitInfo= this.onSubmitInfo.bind(this);
+    this.onSubmitInfo = this.onSubmitInfo.bind(this);
+    this.onEditInfo = this.onEditInfo.bind(this);
 
 
     this.state={
-      basicInfo:{
+    
         Name:"",
         NameStore:"",
         Email: "",
         EmailStore:"",
-        Phone: ""
+        Phone: "",
+        PhoneStore:"",
       
     }
   }
 
-
-  }
+  
 
 
 
   handleChange=(e)=>{
     
     this.setState({
-      basicInfo : {
-        [e.target.name]: String(e.target.value),
+        [e.target.name]: String(e.target.value)
     
-      }
+      
     });
   }
-
-
 
   onSubmitInfo=(e)=>{
     e.preventDefault();
     this.setState({
-      basicInfo: { 
-        NameStore: this.state.basicInfo.NameStore.concat(" ",this.state.basicInfo.Name),
-        EmailStore:this.state.basicInfo.EmailStore.concat(" ",this.state.basicInfo.Email),
-        PhoneStore:this.state.basicInfo.PhoneStore.concat(" ",this.state.basicInfo.Phone),
+        NameStore: this.state.Name,
+        EmailStore: this.state.Email,
+        PhoneStore:this.state.Phone,
         Name: "",
         Email: "",
         Phone: "",
-
-
-            },
+      
     });
   }
 
+  onEditInfo=(e)=>{
+    e.preventDefault();
+    this.setState({
+        Name: this.state.NameStore,
+        Email: this.state.EmailStore,
+        Phone:this.state.PhoneStore,
+      
+    });
+  }
+
+
+
   render() {
-    const {basicInfo}= this.state
+    const {Name,Email,Phone, NameStore, PhoneStore, EmailStore}= this.state
+
+  
     return (
       <div className="Basic-Info-Form">
-        <form onSubmit={this.onSubmitInfo}>
+        <form className="basicForm" onSubmit={this.onSubmitInfo} >
           <label htmlFor="basicInfo-Name">Name :</label>
           <input 
+          type="text"
           onChange={this.handleChange}
-          value={this.state.basicInfo.Name}
+          value={Name}
           name="Name"
+    
           />
 
           <label htmlFor="basicInfo-Email">Email:  </label>
           <input 
+          type="text"
           onChange={this.handleChange}
-          value={this.state.basicInfo.Email}
+          value={Email}
           name="Email"
           />
 
           <label htmlFor="basicInfo-Phone">Phone: </label>
           <input 
+          type="text"
           onChange={this.handleChange}
-          value={this.state.basicInfo.Phone}
+          value={Phone}
           name="Phone"
           />
+          
 
           <button type="submit">
-            Submit Basic Info
+            Submit 
           </button>
+          <button className="editbutton" onClick= {this.onEditInfo}>Edit</button>
+
         </form>
-        <Basicinfo basicInfoName={basicInfo.NameStore} basicInfoEmail= {basicInfo.EmailStore} basicInfoPhone={basicInfo.PhoneStore}/>
+
+        <Basicinfo basicInfoName={NameStore} basicInfoEmail= {EmailStore} basicInfoPhone={PhoneStore}/>
         
 
       </div>

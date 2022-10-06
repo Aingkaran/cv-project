@@ -1,0 +1,20 @@
+.BasicInfo{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.Name{
+    font-size: 130px;
+}
+.Phone{
+    font-size: 40px;
+}
+
+
+.Email{
+    font-size: 40px;
+}
+
